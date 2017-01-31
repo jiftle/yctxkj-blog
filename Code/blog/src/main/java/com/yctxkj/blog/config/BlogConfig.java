@@ -50,7 +50,7 @@ public class BlogConfig extends JFinalConfig {
 	@Override
 	public void configRoute(Routes me) {
 		me.add("/admin", com.yctxkj.blog.controller.admin.IndexController.class);
-		me.add("/", com.yctxkj.blog.controller.blog.IndexController.class);
+		me.add("/blog", com.yctxkj.blog.controller.blog.IndexController.class);
 	}
 
 	/**
