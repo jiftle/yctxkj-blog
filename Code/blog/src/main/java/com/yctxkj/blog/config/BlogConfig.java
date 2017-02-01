@@ -11,6 +11,7 @@ import com.jfinal.ext.handler.FakeStaticHandler;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
+import com.jfinal.plugin.druid.DruidStatViewHandler;
 import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
 import com.yctxkj.blog.config.Route.AdminRoutes;
@@ -35,13 +36,17 @@ public class BlogConfig extends JFinalConfig {
 
 	@Override
 	public void configHandler(Handlers me) {
-		me.add(new FakeStaticHandler(".jhtml"));
+//		druid 路由排除掉，解决druid路由映射不正确的问题
+		DruidStatViewHandler dvh =  new DruidStatViewHandler("/druid");
+		me.add(dvh);
+		
+		me.add(new FakeStaticHandler(".html"));
 		me.add(new ContextPathHandler("ctx"));
 	}
 
 	@Override
 	public void configInterceptor(Interceptors arg0) {
-
+		
 	}
 
 	// 配置插件
@@ -62,8 +67,8 @@ public class BlogConfig extends JFinalConfig {
 	// 配置路由
 	@Override
 	public void configRoute(Routes me) {
-		me.add(new FrontRoutes());
-		me.add(new AdminRoutes());
+		me.add(new FrontRoutes());//前端路由
+		me.add(new AdminRoutes());//后端路由
 	}
 
 	/**

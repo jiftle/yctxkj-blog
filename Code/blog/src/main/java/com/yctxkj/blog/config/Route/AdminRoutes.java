@@ -4,7 +4,7 @@
 package com.yctxkj.blog.config.Route;
 
 import com.jfinal.config.Routes;
-import com.yctxkj.blog.controller.blog.IndexController;
+import com.yctxkj.blog.controller.admin.IndexController;
 
 /**
  * @author jiftle
@@ -18,7 +18,7 @@ public class AdminRoutes extends Routes {
 	@Override
 	public void config() {
 		setBaseViewPath("/template/admin");
-		this.add("/admin",IndexController.class);
+		this.add("/admin",IndexController.class,"/");
 	}
 
 }
