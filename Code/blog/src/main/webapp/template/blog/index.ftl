@@ -9,9 +9,9 @@
     <meta name="description" content="学的不仅是技术更是梦想。 - 赢创课堂">
     <title>学的不仅是技术更是梦想。  - 赢创课堂</title>
     <!-- Bootstrap Core CSS -->
-    <link href="assets/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${ctx}/assets/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="assets/css/blog.css" rel="stylesheet">
+    <link href="${ctx}/assets/css/blog.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media
     queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file://
@@ -23,10 +23,10 @@
       </script>
     <![endif]-->
     <!-- jQuery Version 1.11.0 -->
-    <script src="assets/js/jquery/1.11.0/jquery.min.js">
+    <script src="${ctx}/assets/js/jquery/1.11.0/jquery.min.js">
     </script>
     <!-- Bootstrap Core JavaScript -->
-    <script src="assets/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="${ctx}/assets/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         try {
             window.AG_onLoad = function(func) {

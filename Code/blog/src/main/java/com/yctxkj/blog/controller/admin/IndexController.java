@@ -13,7 +13,7 @@ public class IndexController extends Controller {
 
 	//提供静态页面资源
 	public void index(){
-		this.renderFreeMarker("/admin/index.ftl");
+		this.renderFreeMarker("index.ftl");
 	}
 	
 	
