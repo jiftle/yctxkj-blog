@@ -40,7 +40,7 @@ public class BlogConfig extends JFinalConfig {
 		DruidStatViewHandler dvh =  new DruidStatViewHandler("/druid");
 		me.add(dvh);
 		
-		me.add(new FakeStaticHandler(".html"));
+//		me.add(new FakeStaticHandler(".html"));
 		me.add(new ContextPathHandler("ctx"));
 	}
 
@@ -52,12 +52,17 @@ public class BlogConfig extends JFinalConfig {
 	// 配置插件
 	@Override
 	public void configPlugin(Plugins me) {
+		boolean bShowSql = PropKit.use("db.properties").getBoolean("showSql", false);
+		
+		
 		// 配置druid数据库连接池插件
 		DruidPlugin druidPlugin = createDruidPlugin();
 		me.add(druidPlugin);
 
 		// 配置ActiveRecord插件
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(druidPlugin);
+		arp.setShowSql(bShowSql);
+		
 		// 所有映射在 MappingKit 中自动化搞定
 		com.yctxkj.blog.model._MappingKit.mapping(arp);
 		me.add(arp);
@@ -72,12 +77,14 @@ public class BlogConfig extends JFinalConfig {
 	}
 
 	/**
-	 * druid
+	 * 初始化Druid插件
 	 * 
 	 * @return
 	 */
 	public static DruidPlugin createDruidPlugin() {
-		return new DruidPlugin(PropKit.get("jdbcUrl"), PropKit.get("user"), PropKit.get("password").trim());
+		DruidPlugin druidPlugin = new DruidPlugin(PropKit.get("jdbcUrl"), PropKit.get("user"), PropKit.get("password").trim());
+		
+		return druidPlugin;
 	}
 
 }

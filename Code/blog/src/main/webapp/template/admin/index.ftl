@@ -9,13 +9,13 @@
     <title>首页 - 管理后台</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="${ctx}/assets/admin/css/bootstrap.css" rel="stylesheet">
 
     <!-- Add custom CSS here -->
-    <link href="css/sb-admin.css" rel="stylesheet">
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link href="${ctx}/assets/admin/css/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="${ctx}/assets/admin/font-awesome/css/font-awesome.min.css">
     <!-- Page Specific CSS -->
-    <link rel="stylesheet" href="css/morris-0.4.3.min.css">
+    <link rel="stylesheet" href="${ctx}/assets/admin/css/morris-0.4.3.min.css">
   </head>
 
   <body>
@@ -40,6 +40,7 @@
           <ul class="nav navbar-nav side-nav">
             <li class="active"><a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             <li><a href="charts.html"><i class="fa fa-bar-chart-o"></i> Charts</a></li>
+            <li><a href="category/list.html"><i class="fa fa-table"></i> 分类管理</a></li>
             <li><a href="tables.html"><i class="fa fa-table"></i> Tables</a></li>
             <li><a href="forms.html"><i class="fa fa-edit"></i> Forms</a></li>
             <li><a href="typography.html"><i class="fa fa-font"></i> Typography</a></li>
@@ -399,15 +400,15 @@
     </div><!-- /#wrapper -->
 
     <!-- JavaScript -->
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap.js"></script>
+    <script src="${ctx}/assets/admin/js/jquery-1.10.2.js"></script>
+    <script src="${ctx}/assets/admin/js/bootstrap.js"></script>
 
     <!-- Page Specific Plugins -->
-    <script src="js/raphael-min.js"></script>
-    <script src="js/morris-0.4.3.min.js"></script>
-    <script src="js/morris/chart-data-morris.js"></script>
-    <script src="js/tablesorter/jquery.tablesorter.js"></script>
-    <script src="js/tablesorter/tables.js"></script>
+    <script src="${ctx}/assets/admin/js/raphael-min.js"></script>
+    <script src="${ctx}/assets/admin/js/morris-0.4.3.min.js"></script>
+    <script src="${ctx}/assets/admin/js/morris/chart-data-morris.js"></script>
+    <script src="${ctx}/assets/admin/js/tablesorter/jquery.tablesorter.js"></script>
+    <script src="${ctx}/assets/admin/js/tablesorter/tables.js"></script>
 
   </body>
 </html>

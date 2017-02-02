@@ -8,4 +8,6 @@ import com.yctxkj.blog.model.base.BaseArticleCategory;
 @SuppressWarnings("serial")
 public class ArticleCategory extends BaseArticleCategory<ArticleCategory> {
 	public static final ArticleCategory dao = new ArticleCategory().dao();
+	
+	
 }

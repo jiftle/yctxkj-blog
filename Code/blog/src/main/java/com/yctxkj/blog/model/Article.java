@@ -8,4 +8,6 @@ import com.yctxkj.blog.model.base.BaseArticle;
 @SuppressWarnings("serial")
 public class Article extends BaseArticle<Article> {
 	public static final Article dao = new Article().dao();
+	
+	
 }
