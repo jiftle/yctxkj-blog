@@ -24,8 +24,6 @@ public class CategoryController extends Controller {
 		System.out.println(list.toString());
 		
 		this.setAttr("list", list);
-		this.setAttr("tg", "tg-------------value");
-		
 		
 		this.renderFreeMarker("category/list.ftl");
 	}
