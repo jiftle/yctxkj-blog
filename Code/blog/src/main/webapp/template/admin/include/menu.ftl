@@ -8,15 +8,16 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="index.html">SB Admin</a>
+    <a class="navbar-brand" href="index">管理后台</a>
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav">
-      <li class="active"><a href="${ctx}/admin/index"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li><a href="${ctx}/admin/charts"><i class="fa fa-bar-chart-o"></i> Charts</a></li>
+      <li class="active"><a href="${ctx}/admin/index"><i class="fa fa-dashboard"></i> 消息中心</a></li>
       <li><a href="${ctx}/admin/category/list"><i class="fa fa-table"></i> 分类管理</a></li>
+
+      <li><a href="${ctx}/admin/charts"><i class="fa fa-bar-chart-o"></i> Charts</a></li>
       <li><a href="${ctx}/admin/tables"><i class="fa fa-table"></i> Tables</a></li>
       <li><a href="${ctx}/admin/forms"><i class="fa fa-edit"></i> Forms</a></li>
       <li><a href="${ctx}/admin/typography"><i class="fa fa-font"></i> Typography</a></li>

@@ -1,6 +1,8 @@
 <ul class="nav navbar-nav navbar-right navbar-user">
   <li class="dropdown messages-dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Messages <span class="badge">7</span> <b class="caret"></b></a>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      <i class="fa fa-envelope"></i> 消息 <span class="badge">7</span> <b class="caret"></b>
+    </a>
     <ul class="dropdown-menu">
       <li class="dropdown-header">7 New Messages</li>
       <li class="message-preview">
@@ -34,7 +36,9 @@
     </ul>
   </li>
   <li class="dropdown alerts-dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> Alerts <span class="badge">3</span> <b class="caret"></b></a>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      <i class="fa fa-bell"></i> 警告 <span class="badge">3</span> <b class="caret"></b>
+    </a>
     <ul class="dropdown-menu">
       <li><a href="#">Default <span class="label label-default">Default</span></a></li>
       <li><a href="#">Primary <span class="label label-primary">Primary</span></a></li>
@@ -49,11 +53,11 @@
   <li class="dropdown user-dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
     <ul class="dropdown-menu">
-      <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
-      <li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>
-      <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
+      <li><a href="#"><i class="fa fa-user"></i> 个人中心</a></li>
+      <li><a href="#"><i class="fa fa-envelope"></i> 收件箱 <span class="badge">7</span></a></li>
+      <li><a href="#"><i class="fa fa-gear"></i> 设置</a></li>
       <li class="divider"></li>
-      <li><a href="#"><i class="fa fa-power-off"></i> Log Out</a></li>
+      <li><a href="#"><i class="fa fa-power-off"></i> 注销</a></li>
     </ul>
   </li>
 </ul>

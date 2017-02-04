@@ -63,6 +63,13 @@
 			<version>2.3.25-incubating</version>
 		</dependency>
 
+		<!-- 日期工具jar -->
+		<dependency>
+			<groupId>com.darwinsys</groupId>
+			<artifactId>hirondelle-date4j</artifactId>
+			<version>1.5.1</version>
+		</dependency>
+
 	</dependencies>
 
 

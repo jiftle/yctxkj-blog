@@ -131,31 +131,13 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+                  <#list list as articleCategory>
                     <li>
                         <a href="list.html">
-              					JAVA教程
+              					${articleCategory.name}
               				  </a>
                     </li>
-                    <li>
-                        <a href="#">
-              					职业路线
-              				  </a>
-                    </li>
-                    <li>
-                        <a href="#">
-              					软件资源
-              				  </a>
-                    </li>
-                    <li>
-                        <a href="#">
-              					人在职场
-              				  </a>
-                    </li>
-                    <li>
-                        <a href="about.html">
-              					关于我们
-              				  </a>
-                    </li>
+                  </#list>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
