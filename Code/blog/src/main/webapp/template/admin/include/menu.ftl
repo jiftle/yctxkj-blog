@@ -16,6 +16,7 @@
     <ul class="nav navbar-nav side-nav">
       <li class="active"><a href="${ctx}/admin/index"><i class="fa fa-dashboard"></i> 消息中心</a></li>
       <li><a href="${ctx}/admin/category/list"><i class="fa fa-table"></i> 分类管理</a></li>
+      <li><a href="${ctx}/admin/article/list"><i class="fa fa-table"></i> 文章管理</a></li>
 
       <li><a href="${ctx}/admin/charts"><i class="fa fa-bar-chart-o"></i> Charts</a></li>
       <li><a href="${ctx}/admin/tables"><i class="fa fa-table"></i> Tables</a></li>
