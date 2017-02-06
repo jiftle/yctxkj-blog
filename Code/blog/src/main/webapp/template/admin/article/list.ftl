@@ -66,12 +66,18 @@
                     <td>${article.id}</td>
                     <td>
                       <#if article.title?length lt 20>
-                      ${(article.title)?default("")}&nbsp;
+                        ${(article.title)?default("")}
                       <#else>
-                      ${article.title?substring(0,20)} ...
+                        ${article.title?substring(0,20)} ...
                       </#if>
                     </td>
-                    <td>${article.content!''}</td>
+                    <td>
+                      <#if article.content?length lt 50>
+                        ${article.content?html}
+                      <#else>
+                        ${(article.content?html)?substring(0,50)} ...
+                      </#if>
+                    </td>
                     <td>${article.createDate}</td>
                     <td>${article.modifyDate}</td>
                     <td><a href="edit?id=${article.id}">[修改]</a>&nbsp;<a href="del?id=${article.id}">[删除]</a></td>

@@ -45,15 +45,18 @@
 
         <div class="row">
           <div class="col-lg-12">
-            <form role="form" action="${ctx}/admin/article/save">
+            <form role="form" method="post" action="${ctx}/admin/article/save">
       				<div class="form-group">
       					 <label for="title">标题</label>
                  <input type="text" class="form-control" id="title" name="title" placeholder="输入标题" />
       				</div>
               <div class="form-group">
-      					 <label for="content">内容</label>
-                 <input type="text" class="form-control" id="content" name="content" placeholder="输入内容" />
-      				</div>
+                 <label for="title">文章内容</label>
+                 <!--style给定宽度可以影响编辑器的最终宽度-->
+                 <script type="text/plain" id="myEditor" name="content" style="width:98%;height:240px;">
+
+                 </script>
+              </div>
 
       				 <button type="submit" class="btn btn-default" >提交</button>
       			</form>
@@ -75,6 +78,26 @@
     <!-- Page Specific Plugins -->
     <script src="${ctx}/assets/admin/js/tablesorter/jquery.tablesorter.js"></script>
     <script src="${ctx}/assets/admin/js/tablesorter/tables.js"></script>
+
+    <link href="${ctx}/assets/ueditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="${ctx}/assets/ueditor/third-party/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="${ctx}/assets/ueditor/umeditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="${ctx}/assets/ueditor/umeditor.min.js"></script>
+    <script type="text/javascript" src="${ctx}/assets/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+    <script type="text/javascript">
+        //实例化编辑器
+        var um = UM.getEditor('myEditor');
+
+        function getContent() {
+            var arr = [];
+            arr.push("使用editor.getContent()方法可以获得编辑器的内容");
+            arr.push("内容为：");
+            arr.push(UM.getEditor('myEditor').getContent());
+            alert(arr.join("\n"));
+        }
+
+    </script>
 
   </body>
 </html>

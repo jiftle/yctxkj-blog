@@ -150,51 +150,22 @@
             <!-- Blog Entries Column -->
             <div class="col-md-8">
                 <!-- BlogIndex ad -->
-
-                <h2>
-                  <a href="#" target="_blank">
-                    JAVA开发入门
-                  </a>
-                  <div class="post-date">
-                	<span class="glyphicon glyphicon-time"></span>
-                	2016-02-25
-                  </div>
-                </h2>
-                <hr> java开发入门，java开发需要坚持不懈的努力，耐得住寂寞，守得住清闲。
-                <p></p>
-                <h3><a href="#" target="_blank">阅读全文 »</a></h3>
-                <p></p>
-                <hr>
-
-                <h2>
-                  <a href="#" target="_blank">
-                    JAVA开发入门
-                  </a>
-                  <div class="post-date">
-                	<span class="glyphicon glyphicon-time"></span>
-                	2016-02-25
-                  </div>
-                </h2>
-                <hr> java开发入门，java开发需要坚持不懈的努力，耐得住寂寞，守得住清闲。
-                <p></p>
-                <h3><a href="#" target="_blank">阅读全文 »</a></h3>
-                <p></p>
-                <hr>
-
-                <h2>
-                  <a href="#" target="_blank">
-                    JAVA开发入门
-                  </a>
-                  <div class="post-date">
-                	<span class="glyphicon glyphicon-time"></span>
-                	2016-02-25
-                  </div>
-                </h2>
-                <hr> java开发入门，java开发需要坚持不懈的努力，耐得住寂寞，守得住清闲。
-                <p></p>
-                <h3><a href="#" target="_blank">阅读全文 »</a></h3>
-                <p></p>
-                <hr>
+                <#list listArticle as article>
+                  <h2>
+                    <a href="#" target="_blank">
+                      ${article.title?default('')}
+                    </a>
+                    <div class="post-date">
+                  	<span class="glyphicon glyphicon-time"></span>
+                  	${article.create_date}
+                    </div>
+                  </h2>
+                  <hr> ${(article.content!'')}
+                  <p></p>
+                  <h3><a href="#" target="_blank">阅读全文 »</a></h3>
+                  <p></p>
+                  <hr>
+                </#list>
 
                 <!-- Pager indicator -->
                 <ul class="pager">

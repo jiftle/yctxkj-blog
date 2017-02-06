@@ -45,7 +45,8 @@
 
         <div class="row">
           <div class="col-lg-12">
-            <form role="form" action="${ctx}/admin/article/update">
+
+            <form role="form" method="post" action="${ctx}/admin/article/update">
               <div class="form-group">
       					 <label for="id">编号</label>
                  <input type="text" class="form-control" id="id" name="id" value="${article.id}" readonly />
@@ -55,9 +56,12 @@
                  <input type="text" class="form-control" id="title" name="title" value="${article.title}" />
       				</div>
               <div class="form-group">
-      					 <label for="content">文章内容</label>
-                 <input type="text" class="form-control" id="content" name="content" value="${article.content}" />
-      				</div>
+                 <label for="title">文章内容</label>
+                 <!--style给定宽度可以影响编辑器的最终宽度-->
+                 <script type="text/plain" id="myEditor" name="content" style="width:98%;height:240px;">
+                     ${article.content!''}
+                 </script>
+              </div>
 
       				 <button type="submit" class="btn btn-default" >提交</button>
       			</form>
@@ -72,6 +76,12 @@
 
     </div><!-- /#wrapper -->
 
+    <div>
+        <h3 id="focush2"></h3>
+    </div>
+
+
+
     <!-- JavaScript -->
     <script src="${ctx}/assets/admin/js/jquery-1.10.2.js"></script>
     <script src="${ctx}/assets/admin/js/bootstrap.js"></script>
@@ -79,6 +89,26 @@
     <!-- Page Specific Plugins -->
     <script src="${ctx}/assets/admin/js/tablesorter/jquery.tablesorter.js"></script>
     <script src="${ctx}/assets/admin/js/tablesorter/tables.js"></script>
+
+    <link href="${ctx}/assets/ueditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+    <!-- <script type="text/javascript" src="${ctx}/assets/ueditor/third-party/jquery.min.js"></script> -->
+    <script type="text/javascript" charset="utf-8" src="${ctx}/assets/ueditor/umeditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="${ctx}/assets/ueditor/umeditor.min.js"></script>
+    <script type="text/javascript" src="${ctx}/assets/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+    <script type="text/javascript">
+        //实例化编辑器
+        var um = UM.getEditor('myEditor');
+
+        function getContent() {
+            var arr = [];
+            arr.push("使用editor.getContent()方法可以获得编辑器的内容");
+            arr.push("内容为：");
+            arr.push(UM.getEditor('myEditor').getContent());
+            alert(arr.join("\n"));
+        }
+
+    </script>
 
   </body>
 </html>
