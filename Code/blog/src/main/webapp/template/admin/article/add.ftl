@@ -45,10 +45,14 @@
 
         <div class="row">
           <div class="col-lg-12">
-            <form role="form" action="${ctx}/admin/category/save">
+            <form role="form" action="${ctx}/admin/article/save">
       				<div class="form-group">
-      					 <label for="categoryname">分类名称</label>
-                 <input type="text" class="form-control" id="categoryname" name="name" placeholder="输入分类名称" />
+      					 <label for="title">标题</label>
+                 <input type="text" class="form-control" id="title" name="title" placeholder="输入标题" />
+      				</div>
+              <div class="form-group">
+      					 <label for="content">内容</label>
+                 <input type="text" class="form-control" id="content" name="content" placeholder="输入内容" />
       				</div>
 
       				 <button type="submit" class="btn btn-default" >提交</button>

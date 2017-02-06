@@ -37,12 +37,12 @@
         <!-- 工具栏 -->
         <div class="row">
           <div class="col-lg-12">
-            <div class="btn-group">
-                <button type="button" class="btn btn-default">
-                  <a href="add">添加文章</a>
-                </button>
-                <button type="button" class="btn btn-default" onclick="JavaScript:history.go(-1);">返回</button>
-            </div>
+            <a href="add">
+              <button type="button" class="btn btn-default">
+              添加文章
+              </button>
+            </a>
+            <button type="button" class="btn btn-default" onclick="JavaScript:history.go(-1);">返回</button>
           </div>
         </div><!-- /.row -->
 
@@ -54,19 +54,27 @@
                   <tr>
                     <th>id <i class="fa fa-sort"></i></th>
                     <th>名称 <i class="fa fa-sort"></i></th>
+                    <th>内容 <i class="fa fa-sort"></i></th>
                     <th>创建时间<i class="fa fa-sort"></i></th>
                     <th>修改时间 <i class="fa fa-sort"></i></th>
                     <th>操作 <i class="fa fa-sort"></i></th>
                   </tr>
                 </thead>
                 <tbody>
-                <#list list as articleCategory>
+                <#list list as article>
                   <tr>
-                    <td>${articleCategory.id}</td>
-                    <td>${articleCategory.title}</td>
-                    <td>${articleCategory.createDate}</td>
-                    <td>${articleCategory.modifyDate}</td>
-                    <td><a href="edit?id=${articleCategory.id}">[修改]</a>&nbsp;<a href="del?id=${articleCategory.id}">[删除]</a></td>
+                    <td>${article.id}</td>
+                    <td>
+                      <#if article.title?length lt 20>
+                      ${(article.title)?default("")}&nbsp;
+                      <#else>
+                      ${article.title?substring(0,20)} ...
+                      </#if>
+                    </td>
+                    <td>${article.content!''}</td>
+                    <td>${article.createDate}</td>
+                    <td>${article.modifyDate}</td>
+                    <td><a href="edit?id=${article.id}">[修改]</a>&nbsp;<a href="del?id=${article.id}">[删除]</a></td>
                   </tr>
                 </#list>
                 </tbody>
