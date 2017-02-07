@@ -2,9 +2,42 @@ package com.yctxkj.blog.util;
 
 import java.util.regex.Pattern;
 
+import javax.servlet.http.HttpServletRequest;
+
+/**
+ * 
+ * @ClassName: HttpUtils 
+ * @Description: TODO(这里用一句话描述这个类的作用) 
+ * @author jiftle
+ * @date 2017年2月7日 下午7:53:01 
+ * @Copyright: 赢创天下科技有限公司
+ *  
+ *
+ */
 public class HttpUtils {
 
-    
+	/**
+	 * 
+	 * @Title: getIpAddr 
+	 * @Description: TODO(这里用一句话描述这个方法的作用) 
+	 * @param @param request
+	 * @param @return  参数说明 
+	 * @return String    返回类型 
+	 * @throws
+	 */
+	public String getIpAddr(HttpServletRequest request) {
+		String ip = request.getHeader("x-forwarded-for");
+		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+			ip = request.getHeader("Proxy-Client-IP");
+		}
+		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+			ip = request.getHeader("WL-Proxy-Client-IP");
+		}
+		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+			ip = request.getRemoteAddr();
+		}
+		return ip;
+	}
 
 	/*** 
 	*  

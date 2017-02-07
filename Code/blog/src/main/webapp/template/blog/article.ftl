@@ -124,7 +124,7 @@
             <span class="icon-bar">
             </span>
           </button>
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="index">
                   首页
                 </a>
             </div>
@@ -133,7 +133,7 @@
                 <ul class="nav navbar-nav">
                   <#list list as articleCategory>
                     <li>
-                        <a href="list?id=${articleCategory.id}">
+                        <a href="list.html">
               					${articleCategory.name}
               				  </a>
                     </li>
@@ -149,32 +149,20 @@
         <di class="row">
             <!-- Blog Entries Column -->
             <div class="col-md-8">
-                <!-- BlogIndex ad -->
-                <#list listArticle as article>
-                  <h2>
-                    <a href="#" target="_blank">
-                      ${article.title?default('')}
-                    </a>
-                    <div class="post-date">
-                  	<span class="glyphicon glyphicon-time"></span>
-                  	${article.create_date}
-                    </div>
-                  </h2>
-                  <hr> ${(article.content!'')}
-                  <p></p>
-                  <h3><a href="article?id=${article.id}" target="_blank">阅读全文 »</a></h3>
-                  <p></p>
-                  <hr>
-                </#list>
+              	<a href="/">首页</a>&nbsp;>&nbsp;正文
 
-                <!-- Pager indicator -->
-                <ul class="pager">
-                    <li class="next">
-                        <a href="#">
-                          下一页 →
-                        </a>
-                    </li>
-                </ul>
+                <!-- BlogIndex ad -->
+                <h2>
+                    ${article.title?default('')}
+                  <div class="post-date">
+                	<span class="glyphicon glyphicon-time"></span>
+                	${article.create_date}
+                  </div>
+                </h2>
+                <hr> ${(article.content!'')}
+                <p></p>
+                <hr>
+
             </div>
             <!-- Blog Sidebar Widgets Column -->
             <div class="col-md-4">

@@ -59,7 +59,7 @@
                  <label for="title">文章内容</label>
                  <!--style给定宽度可以影响编辑器的最终宽度-->
                  <script type="text/plain" id="myEditor" name="content" style="width:98%;height:240px;">
-                     ${article.content!''}
+                      ${article.content!''}
                  </script>
               </div>
 
@@ -98,7 +98,9 @@
 
     <script type="text/javascript">
         //实例化编辑器
-        var um = UM.getEditor('myEditor');
+        var um = UM.getEditor('myEditor', {
+                                autoHeightEnabled: false
+                            });
 
         function getContent() {
             var arr = [];

@@ -14,15 +14,16 @@ import java.util.TimeZone;
 
 import hirondelle.date4j.DateTime;
 
-/** 
-* @ClassName: DateUtils 
-* @Description: TODO(这里用一句话描述这个类的作用) 
-* @author jiftle
-* @date 2017年2月6日 下午6:37:43 
-* @Copyright: 赢创天下科技有限公司
-*  
-*  
-*/
+/**
+ * 
+ * @ClassName: DateUtils 
+ * @Description: TODO(这里用一句话描述这个类的作用) 
+ * @author jiftle
+ * @date 2017年2月7日 下午7:53:56 
+ * @Copyright: 赢创天下科技有限公司
+ *  
+ *
+ */
 public class DateUtils {
 
 	/**

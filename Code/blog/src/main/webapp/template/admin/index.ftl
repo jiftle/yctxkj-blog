@@ -26,13 +26,13 @@
 
         <div class="row">
           <div class="col-lg-12">
-            <h1>Dashboard <small>Statistics Overview</small></h1>
+            <h1>仪表盘 <small>统计概况</small></h1>
             <ol class="breadcrumb">
               <li class="active"><i class="fa fa-dashboard"></i> Dashboard</li>
             </ol>
             <div class="alert alert-success alert-dismissable">
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-              Welcome to SB Admin by <a class="alert-link" href="http://startbootstrap.com">Start Bootstrap</a>! Feel free to use this template for your admin needs! We are using a few different plugins to handle the dynamic tables and charts, so make sure you check out the necessary documentation links provided.
+              欢迎使用管理后台。
             </div>
           </div>
         </div><!-- /.row -->
@@ -152,7 +152,7 @@
           <div class="col-lg-12">
             <div class="panel panel-primary">
               <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Traffic Statistics: October 1, 2013 - October 31, 2013</h3>
+                <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> 访问统计: October 1, 2013 - October 31, 2013</h3>
               </div>
               <div class="panel-body">
                 <div id="morris-chart-area"></div>

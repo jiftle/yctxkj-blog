@@ -16,14 +16,26 @@ import com.yctxkj.blog.service.ArticleService;
  */
 public class IndexController extends Controller {
 
-	//提供静态页面资源
-		public void index(){
-			List<ArticleCategory> list = ArticleCategoryService.findAll();
-			List<Article> listArticle = ArticleService.findAll();
+	public void index() {
+		List<ArticleCategory> list = ArticleCategoryService.findAll();
+		List<Article> listArticle = ArticleService.findAll();
 
-			this.setAttr("list", list);
-			this.setAttr("listArticle", listArticle);
-			
-			this.render("index.ftl");
-		}
+		this.setAttr("list", list);
+		this.setAttr("listArticle", listArticle);
+
+		this.render("index.ftl");
+	}
+	
+	public void article() {
+		Long id = this.getParaToLong("id");
+		
+		Article article = Article.dao.findById(id);
+		List<ArticleCategory> list = ArticleCategoryService.findAll();
+
+		this.setAttr("article", article);
+		this.setAttr("list", list);
+
+		this.render("article.ftl");
+	}
+	
 }
