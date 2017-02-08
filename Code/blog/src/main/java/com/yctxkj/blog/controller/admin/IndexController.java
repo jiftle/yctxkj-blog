@@ -5,6 +5,7 @@ package com.yctxkj.blog.controller.admin;
 
 import com.jfinal.core.ActionKey;
 import com.jfinal.core.Controller;
+import com.yctxkj.blog.model.Admin;
 
 /**
  * 后台
@@ -16,6 +17,12 @@ public class IndexController extends Controller {
 
 	//提供静态页面资源
 	public void index(){
+		Admin admin = this.getSessionAttr("loginAdmin");
+		if(admin == null){
+			this.redirect("/admin/login/index");
+			return;
+		}
+		
 		this.render("index.ftl");
 	}
 	

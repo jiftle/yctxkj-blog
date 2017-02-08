@@ -57,7 +57,7 @@
       <li><a href="#"><i class="fa fa-envelope"></i> 收件箱 <span class="badge">7</span></a></li>
       <li><a href="#"><i class="fa fa-gear"></i> 设置</a></li>
       <li class="divider"></li>
-      <li><a href="#"><i class="fa fa-power-off"></i> 注销</a></li>
+      <li><a href="${ctx}/admin/login/logout"><i class="fa fa-power-off"></i> 注销</a></li>
     </ul>
   </li>
 </ul>

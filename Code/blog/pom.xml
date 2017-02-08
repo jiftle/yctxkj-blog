@@ -77,7 +77,14 @@
 			<version>1.2.2</version>
 		</dependency>
 
-		
+		<!-- 字符串工具 -->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+
+
 
 	</dependencies>
 
