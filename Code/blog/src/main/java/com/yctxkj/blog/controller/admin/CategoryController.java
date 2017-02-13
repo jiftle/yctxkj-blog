@@ -8,8 +8,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
+import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.Ret;
+import com.jfinal.plugin.ehcache.CacheInterceptor;
 import com.yctxkj.blog.model.ArticleCategory;
 import com.yctxkj.blog.service.ArticleCategoryService;
 
@@ -23,6 +25,7 @@ import hirondelle.date4j.DateTime;
  */
 public class CategoryController extends Controller {
 
+	@Before(CacheInterceptor.class)
 	public void list(){
 		
 		List<ArticleCategory> list = ArticleCategoryService.findAll();

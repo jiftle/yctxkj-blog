@@ -8,10 +8,14 @@
 */
 package com.yctxkj.blog.controller.admin.login;
 
+import com.jfinal.aop.Before;
+import com.jfinal.captcha.CaptchaRender;
 import com.jfinal.core.Controller;
+import com.jfinal.kit.HashKit;
 import com.jfinal.kit.Ret;
 import com.yctxkj.blog.model.Admin;
 import com.yctxkj.blog.util.WebUtils;
+import com.yctxkj.blog.validator.admin.login.LoginValidator;
 
 /**
  * @ClassName: LoginController
@@ -28,19 +32,49 @@ public class LoginController extends Controller {
 
 	/**
 	 * 
-	 * @Title: submit @Description: TODO(这里用一句话描述这个方法的作用) @param 参数说明 @return
-	 *         void 返回类型 @throws
+	 * @Title: captchaImg 
+	 * @Description: 验证码图片 
+	 * @param   参数说明 
+	 * @return void    返回类型 
+	 * @throws
 	 */
+	public void captcha_img() {  
+        CaptchaRender img = new CaptchaRender();  
+        render(img);  
+    }  
+	
+	
+	
+	/**
+	 * 
+	 * @Title: submit @Description: 提交表单
+	 *  @param 参数说明 @return
+	 * void 返回类型 @throws
+	 */
+	@Before(LoginValidator.class)
 	public void submit() {
 		String username = this.getPara("username");
 		String pwd = this.getPara("pwd");
 		String sql = "";
-		Ret ret = ret = new Ret();
+		
+		String captcha = this.getPara("captcha");
 
+		//处理参数
+		if(CaptchaRender.validate(this, captcha) == false){
+			Ret ret = new Ret();
+			ret.setFail();
+			ret.set("msg","验证码错误");
+			
+			this.renderJson(ret);
+			return;
+		}
+		
+		pwd = HashKit.md5(pwd);
 		sql = String.format("select * from xx_admin where username = '%s' and `password`='%s';", username, pwd);
 		Admin admin = Admin.dao.findFirst(sql);
 
 		if (admin == null) {
+			Ret ret = new Ret();
 			ret.setFail();
 			ret.set("msg", "登录失败，用户名或密码不正确。");
 
@@ -61,7 +95,7 @@ public class LoginController extends Controller {
 	/**
 	 * 
 	 * @Title: logout @Description: TODO(这里用一句话描述这个方法的作用) @param 参数说明 @return
-	 * void 返回类型 @throws
+	 *         void 返回类型 @throws
 	 */
 	public void logout() {
 		Admin admin = this.getSessionAttr("loginAdmin");

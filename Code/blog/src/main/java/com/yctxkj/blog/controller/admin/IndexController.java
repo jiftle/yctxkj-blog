@@ -3,8 +3,13 @@
  */
 package com.yctxkj.blog.controller.admin;
 
+import java.util.Properties;
+
+import com.jfinal.aop.Before;
 import com.jfinal.core.ActionKey;
 import com.jfinal.core.Controller;
+import com.jfinal.ext.interceptor.SessionInViewInterceptor;
+import com.jfinal.plugin.ehcache.CacheInterceptor;
 import com.yctxkj.blog.model.Admin;
 
 /**
@@ -13,9 +18,11 @@ import com.yctxkj.blog.model.Admin;
  * @author jiftle
  *
  */
+@Before(SessionInViewInterceptor.class)
 public class IndexController extends Controller {
 
 	//提供静态页面资源
+	
 	public void index(){
 		Admin admin = this.getSessionAttr("loginAdmin");
 		if(admin == null){
@@ -23,6 +30,11 @@ public class IndexController extends Controller {
 			return;
 		}
 		
+		// 获取系统信息
+		Properties systemPro = System.getProperties();
+		
+		setAttr("systemPro", systemPro);
+				
 		this.render("index.ftl");
 	}
 	

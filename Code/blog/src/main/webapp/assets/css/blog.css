@@ -23,3 +23,10 @@ footer {
 a{
   text-decoration:none;
 }
+
+.ba {
+    color: #666;
+    text-decoration: none;
+    background: url(/images/i.png) no-repeat right -70px;
+    padding-right: 15px;
+}

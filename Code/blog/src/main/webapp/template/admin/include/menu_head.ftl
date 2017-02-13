@@ -51,7 +51,7 @@
     </ul>
   </li>
   <li class="dropdown user-dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>${session["loginAdmin"].name} <b class="caret"></b></a>
     <ul class="dropdown-menu">
       <li><a href="#"><i class="fa fa-user"></i> 个人中心</a></li>
       <li><a href="#"><i class="fa fa-envelope"></i> 收件箱 <span class="badge">7</span></a></li>

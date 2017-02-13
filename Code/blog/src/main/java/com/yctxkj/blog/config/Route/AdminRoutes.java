@@ -4,6 +4,7 @@
 package com.yctxkj.blog.config.Route;
 
 import com.jfinal.config.Routes;
+import com.yctxkj.blog.controller.admin.AdminController;
 import com.yctxkj.blog.controller.admin.ArticleController;
 import com.yctxkj.blog.controller.admin.CategoryController;
 import com.yctxkj.blog.controller.admin.IndexController;
@@ -25,6 +26,7 @@ public class AdminRoutes extends Routes {
 		this.add("/admin/login",LoginController.class,"/");
 		this.add("/admin/category",CategoryController.class,"/");
 		this.add("/admin/article",ArticleController.class,"/");
+		this.add("/admin/admin",AdminController.class,"/");
 	}
 
 	

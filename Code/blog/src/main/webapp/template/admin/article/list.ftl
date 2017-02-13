@@ -65,11 +65,13 @@
                   <tr>
                     <td>${article.id}</td>
                     <td>
+                      <a href="${ctx}/article?id=${article.id}" target="_blank">
                       <#if article.title?length lt 20>
                         ${(article.title)?default("")}
                       <#else>
                         ${article.title?substring(0,20)} ...
                       </#if>
+                      </a>
                     </td>
                     <td>
                       <#if article.content?length lt 50>
@@ -80,7 +82,8 @@
                     </td>
                     <td>${article.createDate}</td>
                     <td>${article.modifyDate}</td>
-                    <td><a href="edit?id=${article.id}">[修改]</a>&nbsp;<a href="del?id=${article.id}">[删除]</a></td>
+                    <td><a href="edit?id=${article.id}">[修改]</a>&nbsp;
+                      <a href="del?id=${article.id}">[删除]</a></td>
                   </tr>
                 </#list>
                 </tbody>

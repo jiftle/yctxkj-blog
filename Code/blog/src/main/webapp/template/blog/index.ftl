@@ -27,123 +27,11 @@
     </script>
     <!-- Bootstrap Core JavaScript -->
     <script src="${ctx}/assets/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-        try {
-            window.AG_onLoad = function(func) {
-                if (window.addEventListener) {
-                    window.addEventListener('DOMContentLoaded', func);
-                }
-            };
-            window.AG_removeElementById = function(id) {
-                var element = document.getElementById(id);
-                if (element && element.parentNode) {
-                    element.parentNode.removeChild(element);
-                }
-            };
-            window.AG_removeElementBySelector = function(selector) {
-                if (!document.querySelectorAll) {
-                    return;
-                }
-                var nodes = document.querySelectorAll(selector);
-                if (nodes) {
-                    for (var i = 0; i < nodes.length; i++) {
-                        if (nodes[i] && nodes[i].parentNode) {
-                            nodes[i].parentNode.removeChild(nodes[i]);
-                        }
-                    }
-                }
-            };
-            window.AG_each = function(selector, fn) {
-                if (!document.querySelectorAll) return;
-                var elements = document.querySelectorAll(selector);
-                for (var i = 0; i < elements.length; i++) {
-                    fn(elements[i]);
-                };
-            };
-            var AG_removeParent = function(el, fn) {
-                while (el && el.parentNode) {
-                    if (fn(el)) {
-                        el.parentNode.removeChild(el);
-                        return;
-                    }
-                    el = el.parentNode;
-                }
-            };
-            var AG_onLoad = function(func) {
-                if (document.readyState === "complete" || document.readyState === "interactive") func();
-                else if (document.addEventListener) document.addEventListener("DOMContentLoaded", func);
-                else if (document.attachEvent) document.attachEvent("DOMContentLoaded", func)
-            };
-            var AG_removeElementById = function(id) {
-                var element = document.getElementById(id);
-                if (element && element.parentNode) {
-                    element.parentNode.removeChild(element);
-                }
-            };
-            var AG_removeElementBySelector = function(selector) {
-                if (!document.querySelectorAll) {
-                    return;
-                }
-                var nodes = document.querySelectorAll(selector);
-                if (nodes) {
-                    for (var i = 0; i < nodes.length; i++) {
-                        if (nodes[i] && nodes[i].parentNode) {
-                            nodes[i].parentNode.removeChild(nodes[i]);
-                        }
-                    }
-                }
-            };
-            var AG_each = function(selector, fn) {
-                if (!document.querySelectorAll) return;
-                var elements = document.querySelectorAll(selector);
-                for (var i = 0; i < elements.length; i++) {
-                    fn(elements[i]);
-                };
-            };
-        } catch (ex) {
-            console.error('Error executing AG js: ' + ex);
-        }
-    </script>
-    <style id="holderjs-style" type="text/css"></style>
 </head>
 
 <body class=" __plain_text_READY__">
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">
-              Toggle navigation
-            </span>
-            <span class="icon-bar">
-            </span>
-            <span class="icon-bar">
-            </span>
-            <span class="icon-bar">
-            </span>
-          </button>
-                <a class="navbar-brand" href="#">
-                  首页
-                </a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                  <#list list as articleCategory>
-                    <li>
-                        <a href="list?id=${articleCategory.id}">
-              					${articleCategory.name}
-              				  </a>
-                    </li>
-                  </#list>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
+    <#include "include/nav.ftl">
+
     <!-- Page Content -->
     <div class="container">
         <di class="row">
@@ -152,7 +40,7 @@
                 <!-- BlogIndex ad -->
                 <#list listArticle as article>
                   <h2>
-                    <a href="#" target="_blank">
+                    <a href="article?id=${article.id}" target="_blank">
                       ${article.title?default('')}
                     </a>
                     <div class="post-date">
@@ -160,7 +48,12 @@
                   	${article.create_date}
                     </div>
                   </h2>
-                  <hr> ${(article.content!'')}
+                  <hr>
+                  <#if (article.summary!'')?length lt 128>
+                    ${article.summary!''}
+                  <#else>
+                    ${(article.summary)?substring(0,128)} ...
+                  </#if>
                   <p></p>
                   <h3><a href="article?id=${article.id}" target="_blank">阅读全文 »</a></h3>
                   <p></p>
@@ -176,113 +69,16 @@
                     </li>
                 </ul>
             </div>
-            <!-- Blog Sidebar Widgets Column -->
-            <div class="col-md-4">
-                <!-- Blog Categories Well -->
-                <div class="well">
-                    <h4>
-                      栏目分类
-                    </h4>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled">
-                                <li>
-                                    <a href="#">
-                                      JAVA教程
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                      职业路线
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                      软件资源
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- /.col-lg-6 -->
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled">
-                                <li>
-                                    <a href="#">
-                                      人在职场
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                      关于我们
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- /.col-lg-6 -->
 
-                    </div>
-                    <!-- /.row -->
-                </div>
+            <#include "include/right.ftl">
 
-                <!-- Blog Recent Well -->
-                <div class="well">
-                    <h4>
-                      最新文章
-                    </h4>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <ul class="list-unstyled">
-                                <li>
-                                    <a href="#">
-                                      java入门技术
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                      java入门技术
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                      java入门技术
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- Blog Links Well -->
-                <div class="well">
-                    <h4>
-                      友情链接
-                    </h4>
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="https://github.com/">
-                              GitHub
-                            </a>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
     </div>
     <!-- /.row -->
 
-    <!-- Footer -->
-    <footer>
 
-        <div class="row">
-            <div class="col-lg-12">
-                <div style="text-align:center;margin-top:15px;">
-                    Copyright © www.yctxkj.com &nbsp; 豫ICP备16018950号</a>
-                </div>
+<!-- Footer -->
+<#include "include/footer.ftl">
 
-            </div>
-            <!-- /.col-lg-12 -->
-        </div>
-        <!-- /.row -->
-    </footer>
     </div>
     <!-- /.container -->
 

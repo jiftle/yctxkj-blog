@@ -7,8 +7,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
+import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.Ret;
+import com.jfinal.plugin.ehcache.CacheInterceptor;
 import com.yctxkj.blog.model.Article;
 import com.yctxkj.blog.model.ArticleCategory;
 import com.yctxkj.blog.service.ArticleCategoryService;
@@ -25,6 +27,7 @@ import hirondelle.date4j.DateTime;
  */
 public class ArticleController extends Controller {
 
+	@Before(CacheInterceptor.class)
 	public void list() {
 
 		List<Article> list = ArticleService.findAll();
@@ -35,6 +38,7 @@ public class ArticleController extends Controller {
 		this.render("article/list.ftl");
 	}
 
+	@Before(CacheInterceptor.class)
 	public void add() {
 
 		this.render("article/add.ftl");
@@ -100,12 +104,21 @@ public class ArticleController extends Controller {
 		Long id = this.getParaToLong("id");
 		String title = this.getPara("title");
 		String content = this.getPara("content");
+		String summary = this.getPara("summary");
 		Article article = Article.dao.findById(id);
 
+		if(summary.length() > 256){
+			summary = summary.substring(0, 256);
+		}
+		
 		DateTime now = DateTime.now(TimeZone.getDefault());
 		String strTime = now.format("YYYY-MM-DD hh:mm:ss");
 
-		article.set("title", title).set("content", content).set("modify_date", DateUtils.getCurDateTime());
+		article.set("title", title);
+		article.set("content", content);
+		article.set("modify_date", DateUtils.getCurDateTime());
+		article.set("summary", summary);
+		
 		bRet = article.update();
 		if (!bRet) {
 			this.renderJson(new Ret().setFail().set("msg", "修改失败"));

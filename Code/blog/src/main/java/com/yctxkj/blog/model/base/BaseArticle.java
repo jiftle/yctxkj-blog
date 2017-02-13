@@ -36,6 +36,15 @@ public abstract class BaseArticle<M extends BaseArticle<M>> extends Model<M> imp
 		return get("modify_date");
 	}
 
+	public M setSummary(java.lang.String summary) {
+		set("summary", summary);
+		return (M)this;
+	}
+
+	public java.lang.String getSummary() {
+		return get("summary");
+	}
+
 	public M setAuthor(java.lang.String author) {
 		set("author", author);
 		return (M)this;

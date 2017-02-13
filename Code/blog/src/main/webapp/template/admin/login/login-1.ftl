@@ -36,6 +36,13 @@
 				</div>
 				<div class="form-group">
 					<div class="col-md-12">
+						<label for="captcha" class="control-label">验证码</label>
+						 <input type="text" class="form-control" style="width:150px;" id="captcha" name="captcha" placeholder="请输入验证码">
+						 <img class="vcode" id="captchaimg" src="${ctx}/admin/admin/captcha_img">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-12">
 						<div class="checkbox control-wrapper">
 							<label>
 	                  		<input type="checkbox"> 记住密码
@@ -65,8 +72,8 @@
 					</div>
 				</div>
 			</form>
-			<div class="text-center" style="display:none;">
-				<a href="create-account.html" class="templatemo-create-new">注册新账户 <i class="fa fa-arrow-circle-o-right"></i></a>
+			<div class="text-center" style="display:block;">
+				<a href="${ctx}/admin/admin/register" class="templatemo-create-new">注册新账户 <i class="fa fa-arrow-circle-o-right"></i></a>
 			</div>
 		</div>
 	</div>

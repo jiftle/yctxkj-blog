@@ -29,7 +29,7 @@ public class ArticleService {
 	*  @see com.yctxkj.blog.service.ArticleCategoryService#findAll() 
 	*/
 	public static List<Article> findAll() {
-		String sql = "select * from xx_article";
+		String sql = "select * from xx_article order by id desc;";
 		
 		return Article.dao.find(sql);
 	}
