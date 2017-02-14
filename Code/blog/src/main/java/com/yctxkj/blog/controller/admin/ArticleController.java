@@ -9,8 +9,12 @@ import java.util.TimeZone;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
+import com.jfinal.ext.interceptor.SessionInViewInterceptor;
 import com.jfinal.kit.Ret;
 import com.jfinal.plugin.ehcache.CacheInterceptor;
+import com.jfinal.plugin.ehcache.CacheKit;
+import com.jfinal.plugin.ehcache.CacheName;
+import com.jfinal.plugin.ehcache.EvictInterceptor;
 import com.yctxkj.blog.model.Article;
 import com.yctxkj.blog.model.ArticleCategory;
 import com.yctxkj.blog.service.ArticleCategoryService;
@@ -25,9 +29,9 @@ import hirondelle.date4j.DateTime;
  * @author jiftle
  *
  */
+@Before(SessionInViewInterceptor.class)
 public class ArticleController extends Controller {
 
-	@Before(CacheInterceptor.class)
 	public void list() {
 
 		List<Article> list = ArticleService.findAll();
@@ -38,7 +42,6 @@ public class ArticleController extends Controller {
 		this.render("article/list.ftl");
 	}
 
-	@Before(CacheInterceptor.class)
 	public void add() {
 
 		this.render("article/add.ftl");
@@ -62,6 +65,8 @@ public class ArticleController extends Controller {
 	/**
 	 * @Title: del @Description: 删除 @param 参数说明 @return void 返回类型 @throws
 	 */
+	@Before(EvictInterceptor.class)
+	@CacheName("blogList")
 	public void del() {
 		Long id = this.getParaToLong("id");
 
@@ -73,6 +78,7 @@ public class ArticleController extends Controller {
 			this.renderJson(ret);
 		}
 
+		CacheKit.removeAll("blogIndex");
 		this.redirect("/admin/article/list");
 	}
 
@@ -81,6 +87,8 @@ public class ArticleController extends Controller {
 	 * @Title: save @Description: TODO(这里用一句话描述这个方法的作用) @param 参数说明 @return void
 	 * 返回类型 @throws
 	 */
+	@Before(EvictInterceptor.class)
+	@CacheName("blogList")
 	public void save() {
 		boolean bRet = false;
 		String title = this.getPara("title");
@@ -96,9 +104,13 @@ public class ArticleController extends Controller {
 			return;
 		}
 
+		CacheKit.removeAll("blogIndex");
+		
 		this.redirect("/admin/article/list");
 	}
 
+	@Before(EvictInterceptor.class)
+	@CacheName("blogArticle")
 	public void update() {
 		boolean bRet = false;
 		Long id = this.getParaToLong("id");
@@ -125,6 +137,8 @@ public class ArticleController extends Controller {
 			return;
 		}
 
+		CacheKit.removeAll("blogIndex");
+		CacheKit.removeAll("blogList");
 		this.redirect("/admin/article/list");
 	}
 }

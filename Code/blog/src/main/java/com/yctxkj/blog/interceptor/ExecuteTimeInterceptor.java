@@ -27,9 +27,9 @@ public class ExecuteTimeInterceptor implements Interceptor {
 		Long endTime = System.currentTimeMillis();
 		executeTime = endTime - startTime;
 		
-		if (logger.isDebugEnabled()) {
-			logger.debug("[" + inv.getActionKey() + "] executeTime: " + executeTime + "ms");
-		}
+//		if (logger.isDebugEnabled()) {
+			logger.info("[" + inv.getActionKey() + "] executeTime: " + executeTime + "ms");
+//		}
 		
 	
 	}

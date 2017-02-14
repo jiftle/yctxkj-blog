@@ -6,6 +6,7 @@ import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.ehcache.CacheInterceptor;
+import com.jfinal.plugin.ehcache.CacheName;
 import com.yctxkj.blog.model.Article;
 import com.yctxkj.blog.model.ArticleCategory;
 import com.yctxkj.blog.service.ArticleCategoryService;
@@ -21,6 +22,7 @@ public class IndexController extends Controller {
 
 	//首页
 	@Before(CacheInterceptor.class)
+	@CacheName("blogIndex")
 	public void index() {
 		List<ArticleCategory> list = ArticleCategoryService.findAll();
 		List<Article> listArticle = ArticleService.findAll();
@@ -34,6 +36,7 @@ public class IndexController extends Controller {
 
 	// 列表页
 	@Before(CacheInterceptor.class)
+	@CacheName("blogList")
 	public void list() {
 		List<ArticleCategory> list = ArticleCategoryService.findAll();
 		List<Article> listArticle = ArticleService.findAll();
@@ -47,6 +50,7 @@ public class IndexController extends Controller {
 
 	//详情页
 	@Before(CacheInterceptor.class)
+	@CacheName("blogArticle")
 	public void article() {
 		Long id = this.getParaToLong("id");
 

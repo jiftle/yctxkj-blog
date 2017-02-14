@@ -20,6 +20,7 @@ import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
 import com.yctxkj.blog.config.Route.AdminRoutes;
 import com.yctxkj.blog.config.Route.FrontRoutes;
+import com.yctxkj.blog.handler.StaticHandler;
 import com.yctxkj.blog.interceptor.ExecuteTimeInterceptor;
 
 public class BlogConfig extends JFinalConfig {
@@ -45,6 +46,9 @@ public class BlogConfig extends JFinalConfig {
 		DruidStatViewHandler dvh = new DruidStatViewHandler("/druid");
 		me.add(dvh);
 
+		//静态文件目录
+		me.add(new StaticHandler("/assets"));
+		
 		// me.add(new FakeStaticHandler(".html"));
 		// 添加路径映射
 		me.add(new ContextPathHandler("ctx"));

@@ -10,8 +10,11 @@ import java.util.TimeZone;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
+import com.jfinal.ext.interceptor.SessionInViewInterceptor;
 import com.jfinal.kit.Ret;
 import com.jfinal.plugin.ehcache.CacheInterceptor;
+import com.jfinal.plugin.ehcache.CacheName;
+import com.jfinal.plugin.ehcache.EvictInterceptor;
 import com.yctxkj.blog.model.ArticleCategory;
 import com.yctxkj.blog.service.ArticleCategoryService;
 
@@ -23,9 +26,11 @@ import hirondelle.date4j.DateTime;
  * @author jiftle
  *
  */
+@Before(SessionInViewInterceptor.class)
 public class CategoryController extends Controller {
 
-	@Before(CacheInterceptor.class)
+//	@Before(CacheInterceptor.class)
+//	@CacheName("articleCategory")
 	public void list(){
 		
 		List<ArticleCategory> list = ArticleCategoryService.findAll();
@@ -69,6 +74,8 @@ public class CategoryController extends Controller {
 	 * @return void    返回类型 
 	 * @throws
 	 */
+	@Before(EvictInterceptor.class)
+	@CacheName("blogList")
 	public void del(){
 		Long id = this.getParaToLong("id");
 		
@@ -92,6 +99,8 @@ public class CategoryController extends Controller {
 	 * @return void    返回类型 
 	 * @throws
 	 */
+	@Before(EvictInterceptor.class)
+	@CacheName("blogList")
 	public void save(){
 		boolean bRet = false;
 		String categoryName = this.getPara("name");
@@ -108,6 +117,8 @@ public class CategoryController extends Controller {
 		this.redirect("/admin/category/list");
 	}
 	
+	@Before(EvictInterceptor.class)
+	@CacheName("blogList")
 	public void update(){
 		boolean bRet = false;
 		Long id = this.getParaToLong("id");
