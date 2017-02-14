@@ -34,7 +34,6 @@ public class CategoryController extends Controller {
 	public void list(){
 		
 		List<ArticleCategory> list = ArticleCategoryService.findAll();
-		System.out.println(list.toString());
 		
 		this.setAttr("list", list);
 		

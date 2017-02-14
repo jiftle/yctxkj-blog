@@ -22,11 +22,12 @@ public class AdminRoutes extends Routes {
 	@Override
 	public void config() {
 		setBaseViewPath("/template/admin");
-		this.add("/admin",IndexController.class,"/");
 		this.add("/admin/login",LoginController.class,"/");
 		this.add("/admin/category",CategoryController.class,"/");
 		this.add("/admin/article",ArticleController.class,"/");
 		this.add("/admin/admin",AdminController.class,"/");
+		this.add("/admin",IndexController.class,"/");
+		
 	}
 
 	

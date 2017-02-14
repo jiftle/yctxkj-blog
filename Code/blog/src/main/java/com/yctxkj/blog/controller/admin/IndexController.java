@@ -10,6 +10,7 @@ import com.jfinal.core.ActionKey;
 import com.jfinal.core.Controller;
 import com.jfinal.ext.interceptor.SessionInViewInterceptor;
 import com.jfinal.plugin.ehcache.CacheInterceptor;
+import com.yctxkj.blog.interceptor.AdminInterceptor;
 import com.yctxkj.blog.model.Admin;
 
 /**
@@ -18,7 +19,7 @@ import com.yctxkj.blog.model.Admin;
  * @author jiftle
  *
  */
-@Before(SessionInViewInterceptor.class)
+@Before({SessionInViewInterceptor.class,AdminInterceptor.class})
 public class IndexController extends Controller {
 
 	//提供静态页面资源

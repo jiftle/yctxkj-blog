@@ -37,7 +37,7 @@
 
                     <li>
                       <a href="article?id=${article.id}" >
-                        ${article.title?default('')}
+                        ${article_index + 1}.${article.title?default('')}
                       </a>
                     </li>
                   </#list>

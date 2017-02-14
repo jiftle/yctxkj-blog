@@ -17,7 +17,7 @@
 	<div class="container">
 		<div class="col-md-12">
 			<h1 class="margin-bottom-15">登录</h1>
-			<form class="form-horizontal templatemo-container templatemo-login-form-1 margin-bottom-30" role="form" action="submit" method="post">
+			<form class="form-horizontal templatemo-container templatemo-login-form-1 margin-bottom-30" role="form" action="${ctx}/admin/login/submit" method="post">
 				<div class="form-group">
 					<div class="col-xs-12">
 						<div class="control-wrapper">

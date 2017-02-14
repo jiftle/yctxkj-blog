@@ -57,7 +57,7 @@
       				</div>
               <div class="form-group">
                  <label for="summary">摘要</label>
-                 <input type="text" class="form-control" id="summary" name="summary" value="${article.summary!''}" />
+                 <textarea class="form-control" id="summary" name="summary" rows="3">${article.summary!''}</textarea>
               </div>
               <div class="form-group">
                  <label for="title">文章内容</label>
@@ -65,6 +65,14 @@
                  <script type="text/plain" id="myEditor" name="content" style="width:98%;height:240px;">
                       ${article.content!''}
                  </script>
+              </div>
+              <div class="form-group">
+                 <label for="category">分类</label>
+                 <select class="form-control" id="category" name="category">
+                    <#list categoryList as category>
+              			   <option value="${category.id}">${category.name}</option>
+                    </#list>
+            		</select>
               </div>
 
       				 <button type="submit" class="btn btn-default" >提交</button>

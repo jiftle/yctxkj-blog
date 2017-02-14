@@ -38,8 +38,11 @@ public class IndexController extends Controller {
 	@Before(CacheInterceptor.class)
 	@CacheName("blogList")
 	public void list() {
+		String id = this.getPara("id");
+		String sql = String.format("select * from xx_article where article_category = %s order by id desc;",id);
+		
 		List<ArticleCategory> list = ArticleCategoryService.findAll();
-		List<Article> listArticle = ArticleService.findAll();
+		List<Article> listArticle = Article.dao.find(sql);
 
 		this.setAttr("app", PropKit.use("config.properties").get("app.version"));
 		this.setAttr("list", list);

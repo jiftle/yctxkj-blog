@@ -35,7 +35,6 @@ public class ArticleController extends Controller {
 	public void list() {
 
 		List<Article> list = ArticleService.findAll();
-		System.out.println(list.toString());
 
 		this.setAttr("list", list);
 
@@ -44,19 +43,25 @@ public class ArticleController extends Controller {
 
 	public void add() {
 
+		List<ArticleCategory> list = ArticleCategoryService.findAll();
+
+		this.setAttr("categoryList", list);
+
 		this.render("article/add.ftl");
 	}
 
 	/**
 	 * 
 	 * @Title: edit @Description: TODO(这里用一句话描述这个方法的作用) @param 参数说明 @return void
-	 * 返回类型 @throws
+	 *         返回类型 @throws
 	 */
 	public void edit() {
 
 		Long id = this.getParaToLong("id");
 		Article article = Article.dao.findById(id);
+		List<ArticleCategory> list = ArticleCategoryService.findAll();
 
+		this.setAttr("categoryList", list);
 		this.setAttr("article", article);
 
 		this.render("article/edit.ftl");
@@ -85,18 +90,24 @@ public class ArticleController extends Controller {
 	/**
 	 * 
 	 * @Title: save @Description: TODO(这里用一句话描述这个方法的作用) @param 参数说明 @return void
-	 * 返回类型 @throws
+	 *         返回类型 @throws
 	 */
 	@Before(EvictInterceptor.class)
 	@CacheName("blogList")
 	public void save() {
 		boolean bRet = false;
 		String title = this.getPara("title");
+		String summary = this.getPara("summary");
 		String content = this.getPara("content");
+		String category = this.getPara("category");
 		Article article = new Article();
 
-		article.set("title", title).set("content", content).set("create_date", DateUtils.getCurDateTime())
-				.set("modify_date", DateUtils.getCurDateTime());
+		article.set("title", title);
+		article.set("summary", summary);
+		article.set("content", content);
+		article.set("article_category", category);
+		article.set("create_date", DateUtils.getCurDateTime());
+		article.set("modify_date", DateUtils.getCurDateTime());
 		bRet = article.save();
 
 		if (!bRet) {
@@ -105,7 +116,7 @@ public class ArticleController extends Controller {
 		}
 
 		CacheKit.removeAll("blogIndex");
-		
+
 		this.redirect("/admin/article/list");
 	}
 
@@ -117,12 +128,14 @@ public class ArticleController extends Controller {
 		String title = this.getPara("title");
 		String content = this.getPara("content");
 		String summary = this.getPara("summary");
+		String category = this.getPara("category");
+		
 		Article article = Article.dao.findById(id);
 
-		if(summary.length() > 256){
+		if (summary.length() > 256) {
 			summary = summary.substring(0, 256);
 		}
-		
+
 		DateTime now = DateTime.now(TimeZone.getDefault());
 		String strTime = now.format("YYYY-MM-DD hh:mm:ss");
 
@@ -130,7 +143,8 @@ public class ArticleController extends Controller {
 		article.set("content", content);
 		article.set("modify_date", DateUtils.getCurDateTime());
 		article.set("summary", summary);
-		
+		article.set("article_category", category);
+
 		bRet = article.update();
 		if (!bRet) {
 			this.renderJson(new Ret().setFail().set("msg", "修改失败"));

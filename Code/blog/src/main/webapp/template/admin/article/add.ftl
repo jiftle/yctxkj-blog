@@ -51,14 +51,27 @@
                  <input type="text" class="form-control" id="title" name="title" placeholder="输入标题" />
       				</div>
               <div class="form-group">
+                 <label for="summary">摘要</label>
+                 <textarea class="form-control" id="summary" name="summary" rows="3"></textarea>
+              </div>
+              <div class="form-group">
                  <label for="title">文章内容</label>
                  <!--style给定宽度可以影响编辑器的最终宽度-->
                  <script type="text/plain" id="myEditor" name="content" style="width:98%;height:240px;">
 
                  </script>
               </div>
+              <div class="form-group">
+                 <label for="category">分类</label>
+                 <select class="form-control" id="category" name="category">
+                    <#list categoryList as category>
+              			   <option value="${category.id}">${category.name}</option>
+                    </#list>
+            		</select>
+              </div>
 
       				 <button type="submit" class="btn btn-default" >提交</button>
+               <button type="button" class="btn btn-default" onclick="getPlainTxt()" >获取摘要</button>
       			</form>
           </div>
 
@@ -97,6 +110,17 @@
             alert(arr.join("\n"));
         }
 
+        function getPlainTxt() {
+            //  var arr = [];
+            //  arr.push("使用editor.getPlainTxt()方法可以获得编辑器的带格式的纯文本内容");
+            //  arr.push("内容为：");
+            //  arr.push(UM.getEditor('myEditor').getPlainTxt());
+            //  alert(arr.join('\n'))
+
+             var plain_text = UM.getEditor('myEditor').getPlainTxt();
+             plain_text = plain_text.substring(0,256);
+            $('#summary').val(plain_text);
+         }
     </script>
 
   </body>
