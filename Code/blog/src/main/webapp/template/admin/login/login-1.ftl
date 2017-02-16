@@ -17,7 +17,7 @@
 	<div class="container">
 		<div class="col-md-12">
 			<h1 class="margin-bottom-15">登录</h1>
-			<form class="form-horizontal templatemo-container templatemo-login-form-1 margin-bottom-30" role="form" action="${ctx}/admin/login/submit" method="post">
+			<form id="loginForm" class="form-horizontal templatemo-container templatemo-login-form-1 margin-bottom-30" role="form" action="${ctx}/admin/login/submit" method="post">
 				<div class="form-group">
 					<div class="col-xs-12">
 						<div class="control-wrapper">
@@ -36,17 +36,23 @@
 				</div>
 				<div class="form-group">
 					<div class="col-md-12">
-						<label for="captcha" class="control-label">验证码</label>
-						 <input type="text" class="form-control" style="width:150px;" id="captcha" name="captcha" placeholder="请输入验证码">
-						 <img class="vcode" id="captchaimg" src="${ctx}/admin/admin/captcha_img">
+						<div class="control-wrapper">
+							<label for="captcha" class="control-label fa-label"><i class="fa fa-qrcode fa-medium"></i></label>
+							<div class="input-group">
+								<input type="text" style="height:50px;" class="form-control" id="captcha" name="captcha" placeholder="请输入验证码">
+	 						 	<span class="input-group-addon" style="height:50px;padding:1px 1px;">
+									<img style="height:46px;" id="captchaimg" src="${ctx}/admin/admin/captcha_img">
+								</span>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-md-12">
 						<div class="checkbox control-wrapper">
 							<label>
-	                  		<input type="checkbox"> 记住密码
-                		</label>
+	            	<input type="checkbox"> 记住密码
+              </label>
 						</div>
 					</div>
 				</div>
@@ -77,6 +83,73 @@
 			</div>
 		</div>
 	</div>
+
+
+
+<!-- 引入js脚本  -->
+<script src="${ctx}/assets/admin/login/js/jquery-1.11.1.min.js"></script>
+<script src="${ctx}/assets/admin/login/js/bootstrap.min.js"></script>
+<script src="${ctx}/assets/layer/3.0.1/layer.js"></script>
+<script src="${ctx}/assets/js/jquery/plugins/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+
+<script>
+$(document).ready(function(){
+
+	$loginForm = $("#loginForm");
+
+	$loginForm.validate({
+		 debug:true,
+     rules: {
+       username: {
+         required: true,
+         minlength: 4
+       },
+       pwd: {
+         required: true,
+         minlength: 6
+       },
+			 captcha:{
+				 required: true,
+				 minlength: 4
+			 }
+     },
+		 messages: {
+       username: {
+         required: "请输入用户名",
+         minlength: "用户名必需由4个字母组成"
+       },
+       pwd: {
+         required: "请输入密码",
+         minlength: "密码长度不能小于6个字母"
+       },
+			 captcha:{
+				 required: "请输入验证码",
+				 minlength: "请完整输入"
+			 }
+		 },
+		submitHandler:function(form){
+			$.ajax({
+					url: $loginForm.attr("action"),
+					type: "post",
+					data: $loginForm.serialize(),
+					dataType: "json",
+					success: function(result,status,xhr){
+						console.log(result);
+						layer.msg(result.msg);
+
+						location.href="${ctx}/admin/index";
+					},
+					error: function(xhr){
+						console.log(xhr);
+						layer.msg(xhr.status + " " + xhr.statusText);
+					}
+			});
+    }
+ });
+
+});
+</script>
+
 </body>
 
 </html>

@@ -1,0 +1,57 @@
+Table: xx_admin
+---------------------+--------------+------+-----+---------+---------
+ Field               | Type         | Null | Key | Default | Remarks 
+---------------------+--------------+------+-----+---------+---------
+ id                  | BIGINT(19)   | NO   | PRI |         |         
+ create_date         | DATETIME(19) | NO   |     |         |         
+ modify_date         | DATETIME(19) | NO   |     |         |         
+ department          | VARCHAR(255) | YES  |     |         |         
+ email               | VARCHAR(255) | YES  |     |         |         
+ is_enabled          | BIT(1)       | NO   |     | b'1'    |         
+ is_locked           | BIT(1)       | NO   |     | b'0'    |         
+ locked_date         | DATETIME(19) | YES  |     |         |         
+ login_date          | DATETIME(19) | YES  |     |         |         
+ login_failure_count | INT(10)      | NO   |     | 0       |         
+ login_ip            | VARCHAR(255) | YES  |     |         |         
+ name                | VARCHAR(255) | YES  |     |         |         
+ password            | VARCHAR(255) | NO   |     |         |         
+ username            | VARCHAR(100) | NO   |     |         |         
+---------------------+--------------+------+-----+---------+---------
+
+Table: xx_article
+------------------+----------------------+------+-----+---------+---------
+ Field            | Type                 | Null | Key | Default | Remarks 
+------------------+----------------------+------+-----+---------+---------
+ id               | BIGINT(19)           | NO   | PRI |         |         
+ create_date      | DATETIME(19)         | YES  |     |         |         
+ modify_date      | DATETIME(19)         | YES  |     |         |         
+ summary          | VARCHAR(1024)        | YES  |     |         |         
+ author           | VARCHAR(255)         | YES  |     |         |         
+ content          | LONGTEXT(2147483647) | YES  |     |         |         
+ hits             | BIGINT(19)           | YES  |     |         |         
+ is_publication   | BIT(1)               | YES  |     |         |         
+ is_top           | BIT(1)               | YES  |     |         |         
+ seo_description  | VARCHAR(255)         | YES  |     |         |         
+ seo_keywords     | VARCHAR(255)         | YES  |     |         |         
+ seo_title        | VARCHAR(255)         | YES  |     |         |         
+ title            | VARCHAR(255)         | NO   |     |         |         
+ article_category | BIGINT(19)           | YES  |     |         |         
+------------------+----------------------+------+-----+---------+---------
+
+Table: xx_article_category
+-----------------+--------------+------+-----+-------------------+---------
+ Field           | Type         | Null | Key | Default           | Remarks 
+-----------------+--------------+------+-----+-------------------+---------
+ id              | BIGINT(19)   | NO   | PRI |                   |         
+ create_date     | DATETIME(19) | NO   |     | CURRENT_TIMESTAMP |         
+ modify_date     | DATETIME(19) | YES  |     | CURRENT_TIMESTAMP |         
+ orders          | INT(10)      | YES  |     |                   |         
+ grade           | INT(10)      | YES  |     |                   |         
+ name            | VARCHAR(255) | NO   |     |                   |         
+ seo_description | VARCHAR(255) | YES  |     |                   |         
+ seo_keywords    | VARCHAR(255) | YES  |     |                   |         
+ seo_title       | VARCHAR(255) | YES  |     |                   |         
+ tree_path       | VARCHAR(255) | YES  |     |                   |         
+ parent          | BIGINT(19)   | YES  |     |                   |         
+-----------------+--------------+------+-----+-------------------+---------
+

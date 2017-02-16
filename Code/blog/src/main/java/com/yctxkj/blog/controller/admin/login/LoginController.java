@@ -51,7 +51,7 @@ public class LoginController extends Controller {
 	 *  @param 参数说明 @return
 	 * void 返回类型 @throws
 	 */
-	@Before(LoginValidator.class)
+//	@Before(LoginValidator.class)
 	public void submit() {
 		String username = this.getPara("username");
 		String pwd = this.getPara("pwd");
@@ -89,7 +89,13 @@ public class LoginController extends Controller {
 		WebUtils.setCookie(getResponse(), "username", admin.getStr("username"));
 		WebUtils.setCookie(getResponse(), "name", admin.getStr("name"));
 
-		this.redirect("/admin/index");
+		Ret ret = new Ret();
+		ret.setOk();
+		ret.set("msg", "登录成功");
+		
+		this.renderJson(ret);
+		
+//		this.redirect("/admin/index");
 	}
 
 	/**

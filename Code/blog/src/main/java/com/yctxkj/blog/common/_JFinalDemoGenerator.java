@@ -46,7 +46,7 @@ public class _JFinalDemoGenerator {
 		// 设置是否生成链式 setter 方法
 		generator.setGenerateChainSetter(true);
 		// 设置是否生成字典文件
-		generator.setGenerateDataDictionary(false);
+		generator.setGenerateDataDictionary(true);
 		// 设置需要被移除的表名前缀用于生成modelName。例如表名 "osc_user"，移除前缀 "osc_"后生成的model名为 "User"而非 OscUser
 		generator.setRemovedTableNamePrefixes("xx_");
 		// 生成

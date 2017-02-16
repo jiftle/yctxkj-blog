@@ -44,8 +44,8 @@ public class LoginValidator extends Validator {
 	 */
 	@Override
 	protected void handleError(Controller c) {
-		c.keepPara("name");
-		c.render("login/login-1.ftl");
+//		c.keepPara("name");
+//		c.render("login/login-1.ftl");
 	}
 
 }

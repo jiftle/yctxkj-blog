@@ -59,7 +59,7 @@
 			        <div class="form-group">
 			          <div class="col-md-12">
 			            <input type="submit" value="确认创建账号" class="btn btn-info">
-			            <a href="login-1.html" class="pull-right">登录</a>
+			            <a href="${ctx}/admin/login" class="pull-right">登录</a>
 			          </div>
 			        </div>
 				</div>
