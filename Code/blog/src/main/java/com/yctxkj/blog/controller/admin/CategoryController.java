@@ -15,8 +15,10 @@ import com.jfinal.kit.Ret;
 import com.jfinal.plugin.ehcache.CacheInterceptor;
 import com.jfinal.plugin.ehcache.CacheName;
 import com.jfinal.plugin.ehcache.EvictInterceptor;
+import com.yctxkj.blog.interceptor.AdminInterceptor;
 import com.yctxkj.blog.model.ArticleCategory;
 import com.yctxkj.blog.service.ArticleCategoryService;
+import com.yctxkj.blog.util.DateUtils;
 
 import hirondelle.date4j.DateTime;
 
@@ -26,7 +28,7 @@ import hirondelle.date4j.DateTime;
  * @author jiftle
  *
  */
-@Before(SessionInViewInterceptor.class)
+@Before({SessionInViewInterceptor.class,AdminInterceptor.class})
 public class CategoryController extends Controller {
 
 //	@Before(CacheInterceptor.class)
@@ -106,6 +108,9 @@ public class CategoryController extends Controller {
 		ArticleCategory articleCategory = new ArticleCategory();
 		
 		articleCategory.set("name", categoryName);
+		articleCategory.set("create_date", DateUtils.getCurDateTime());
+		articleCategory.set("modify_date", DateUtils.getCurDateTime());
+		
 		bRet = articleCategory.save();
 		
 		if(!bRet){

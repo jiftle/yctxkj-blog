@@ -8,14 +8,12 @@
 */
 package com.yctxkj.blog.controller.admin.login;
 
-import com.jfinal.aop.Before;
 import com.jfinal.captcha.CaptchaRender;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.HashKit;
 import com.jfinal.kit.Ret;
 import com.yctxkj.blog.model.Admin;
 import com.yctxkj.blog.util.WebUtils;
-import com.yctxkj.blog.validator.admin.login.LoginValidator;
 
 /**
  * @ClassName: LoginController
@@ -42,7 +40,6 @@ public class LoginController extends Controller {
         CaptchaRender img = new CaptchaRender();  
         render(img);  
     }  
-	
 	
 	
 	/**

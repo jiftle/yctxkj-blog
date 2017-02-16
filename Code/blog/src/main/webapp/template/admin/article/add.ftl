@@ -92,21 +92,20 @@
     <script src="${ctx}/assets/admin/js/tablesorter/jquery.tablesorter.js"></script>
     <script src="${ctx}/assets/admin/js/tablesorter/tables.js"></script>
 
-    <link href="${ctx}/assets/ueditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
-    <script type="text/javascript" src="${ctx}/assets/ueditor/third-party/jquery.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="${ctx}/assets/ueditor/umeditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="${ctx}/assets/ueditor/umeditor.min.js"></script>
-    <script type="text/javascript" src="${ctx}/assets/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <!-- 配置文件 -->
+  	<script type="text/javascript" src="${ctx}/assets/ueditor/dev/ueditor.config.js"></script>
+  	<!-- 编辑器源码文件 -->
+  	<script type="text/javascript" src="${ctx}/assets/ueditor/dev/ueditor.all.min.js"></script>
 
     <script type="text/javascript">
         //实例化编辑器
-        var um = UM.getEditor('myEditor');
+        var um = UE.getEditor('myEditor');
 
         function getContent() {
             var arr = [];
             arr.push("使用editor.getContent()方法可以获得编辑器的内容");
             arr.push("内容为：");
-            arr.push(UM.getEditor('myEditor').getContent());
+            arr.push(UE.getEditor('myEditor').getContent());
             alert(arr.join("\n"));
         }
 
@@ -117,7 +116,7 @@
             //  arr.push(UM.getEditor('myEditor').getPlainTxt());
             //  alert(arr.join('\n'))
 
-             var plain_text = UM.getEditor('myEditor').getPlainTxt();
+             var plain_text = UE.getEditor('myEditor').getPlainTxt();
              plain_text = plain_text.substring(0,256);
             $('#summary').val(plain_text);
          }

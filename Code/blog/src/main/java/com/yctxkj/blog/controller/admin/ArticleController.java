@@ -15,6 +15,7 @@ import com.jfinal.plugin.ehcache.CacheInterceptor;
 import com.jfinal.plugin.ehcache.CacheKit;
 import com.jfinal.plugin.ehcache.CacheName;
 import com.jfinal.plugin.ehcache.EvictInterceptor;
+import com.yctxkj.blog.interceptor.AdminInterceptor;
 import com.yctxkj.blog.model.Article;
 import com.yctxkj.blog.model.ArticleCategory;
 import com.yctxkj.blog.service.ArticleCategoryService;
@@ -29,7 +30,7 @@ import hirondelle.date4j.DateTime;
  * @author jiftle
  *
  */
-@Before(SessionInViewInterceptor.class)
+@Before({SessionInViewInterceptor.class,AdminInterceptor.class})
 public class ArticleController extends Controller {
 
 	public void list() {

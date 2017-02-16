@@ -30,3 +30,8 @@ a{
     background: url(/images/i.png) no-repeat right -70px;
     padding-right: 15px;
 }
+
+img{
+    width:100%;
+    height: 100%;
+}

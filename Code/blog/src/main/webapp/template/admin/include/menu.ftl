@@ -8,7 +8,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="index">管理后台</a>
+    <a class="navbar-brand" href="${ctx}/admin/ndex">管理后台</a>
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->

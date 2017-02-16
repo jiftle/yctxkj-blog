@@ -3,13 +3,14 @@
  */
 package com.yctxkj.blog.controller.admin;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Properties;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.ActionKey;
 import com.jfinal.core.Controller;
 import com.jfinal.ext.interceptor.SessionInViewInterceptor;
-import com.jfinal.plugin.ehcache.CacheInterceptor;
 import com.yctxkj.blog.interceptor.AdminInterceptor;
 import com.yctxkj.blog.model.Admin;
 
@@ -33,8 +34,16 @@ public class IndexController extends Controller {
 		
 		// 获取系统信息
 		Properties systemPro = System.getProperties();
+		HashMap hashtable = new LinkedHashMap<String,String>();
 		
-		setAttr("systemPro", systemPro);
+		String keys[] = new String[]{"os.name","os.version","os.arch","user.timezone","java.vendor","java.runtime.name","java.version","java.home","java.io.tmpdir","catalina.base"};
+		for(int i=0;i<keys.length;i++){
+			String key = keys[i];
+			hashtable.put(key, systemPro.get(key));
+		}
+			
+		
+		setAttr("systemPro", hashtable);
 				
 		this.render("index.ftl");
 	}

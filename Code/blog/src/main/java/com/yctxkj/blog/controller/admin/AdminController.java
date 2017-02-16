@@ -10,10 +10,13 @@
  */
 package com.yctxkj.blog.controller.admin;
 
+import com.jfinal.aop.Before;
 import com.jfinal.captcha.CaptchaRender;
 import com.jfinal.core.Controller;
+import com.jfinal.ext.interceptor.SessionInViewInterceptor;
 import com.jfinal.kit.HashKit;
 import com.jfinal.kit.Ret;
+import com.yctxkj.blog.interceptor.AdminInterceptor;
 import com.yctxkj.blog.model.Admin;
 import com.yctxkj.blog.util.DateUtils;
 
@@ -26,6 +29,7 @@ import com.yctxkj.blog.util.DateUtils;
  * 
  * 
  */
+@Before({SessionInViewInterceptor.class,AdminInterceptor.class})
 public class AdminController extends Controller {
 
 
@@ -37,18 +41,7 @@ public class AdminController extends Controller {
 		this.render("login/create-account.ftl");
 	}
 
-	/**
-	 * 
-	 * @Title: captchaImg 
-	 * @Description: 验证码图片 
-	 * @param   参数说明 
-	 * @return void    返回类型 
-	 * @throws
-	 */
-	public void captcha_img() {  
-        CaptchaRender img = new CaptchaRender();  
-        render(img);  
-    }  
+ 
 	
 	/**
 	 * @Title: submit @Description: 注册表单 @param 参数说明 @return

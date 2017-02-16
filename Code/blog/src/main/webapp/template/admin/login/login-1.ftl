@@ -41,7 +41,7 @@
 							<div class="input-group">
 								<input type="text" style="height:50px;" class="form-control" id="captcha" name="captcha" placeholder="请输入验证码">
 	 						 	<span class="input-group-addon" style="height:50px;padding:1px 1px;">
-									<img style="height:46px;" id="captchaimg" src="${ctx}/admin/admin/captcha_img">
+									<img style="height:46px;width:140px;" id="captchaimg" src="${ctx}/admin/login/captcha_img">
 								</span>
 							</div>
 						</div>
