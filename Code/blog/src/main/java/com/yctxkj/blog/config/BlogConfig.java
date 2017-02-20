@@ -9,6 +9,7 @@ import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
 import com.jfinal.ext.handler.ContextPathHandler;
 import com.jfinal.ext.handler.FakeStaticHandler;
+import com.jfinal.kit.Prop;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.cron4j.Cron4jPlugin;
@@ -22,6 +23,7 @@ import com.yctxkj.blog.config.Route.AdminRoutes;
 import com.yctxkj.blog.config.Route.FrontRoutes;
 import com.yctxkj.blog.handler.StaticHandler;
 import com.yctxkj.blog.interceptor.ExecuteTimeInterceptor;
+import com.yctxkj.blog.interceptor.LogInterceptor;
 
 public class BlogConfig extends JFinalConfig {
 
@@ -30,7 +32,7 @@ public class BlogConfig extends JFinalConfig {
 		// 设置模板引擎
 		me.setViewType(ViewType.FREE_MARKER);
 
-		boolean bDevMode = PropKit.use("db.properties").getBoolean("devMode", false);
+		boolean bDevMode = PropKit.use("config.properties").getBoolean("devMode", false);
 
 		me.setDevMode(bDevMode);
 	}
@@ -57,12 +59,13 @@ public class BlogConfig extends JFinalConfig {
 	@Override
 	public void configInterceptor(Interceptors me) {
 		me.add(new ExecuteTimeInterceptor());
+		me.add(new LogInterceptor());
 	}
 
 	// 配置插件
 	@Override
 	public void configPlugin(Plugins me) {
-		boolean bShowSql = PropKit.use("db.properties").getBoolean("showSql", false);
+		boolean bShowSql = PropKit.use("config.properties").getBoolean("showSql", false);
 
 		// 配置druid数据库连接池插件
 		DruidPlugin druidPlugin = createDruidPlugin();
@@ -99,8 +102,9 @@ public class BlogConfig extends JFinalConfig {
 	 * @return
 	 */
 	public static DruidPlugin createDruidPlugin() {
-		DruidPlugin druidPlugin = new DruidPlugin(PropKit.get("jdbcUrl"), PropKit.get("user"),
-				PropKit.get("password").trim());
+		Prop prop = PropKit.use("db.properties");
+		DruidPlugin druidPlugin = new DruidPlugin(prop.get("jdbcUrl"), prop.get("user"),
+				prop.get("password").trim());
 
 		return druidPlugin;
 	}

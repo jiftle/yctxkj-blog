@@ -55,3 +55,35 @@ Table: xx_article_category
  parent          | BIGINT(19)   | YES  |     |                   |         
 -----------------+--------------+------+-----+-------------------+---------
 
+Table: xx_friend_link
+-------------+--------------+------+-----+---------+---------
+ Field       | Type         | Null | Key | Default | Remarks 
+-------------+--------------+------+-----+---------+---------
+ id          | BIGINT(19)   | NO   | PRI |         |         
+ create_date | DATETIME(19) | NO   |     |         |         
+ modify_date | DATETIME(19) | NO   |     |         |         
+ orders      | INT(10)      | YES  |     |         |         
+ logo        | VARCHAR(255) | YES  |     |         |         
+ name        | VARCHAR(255) | NO   |     |         |         
+ type        | INT(10)      | NO   |     |         |         
+ url         | VARCHAR(255) | NO   |     |         |         
+-------------+--------------+------+-----+---------+---------
+
+Table: xx_log
+-------------+----------------------+------+-----+---------+---------
+ Field       | Type                 | Null | Key | Default | Remarks 
+-------------+----------------------+------+-----+---------+---------
+ id          | BIGINT(19)           | NO   | PRI |         | 自动增长id  
+ create_date | DATETIME(19)         | NO   |     |         | 创建时间    
+ modify_date | DATETIME(19)         | NO   |     |         | 修改时间    
+ content     | LONGTEXT(2147483647) | YES  |     |         | 内容      
+ ip          | VARCHAR(255)         | NO   |     |         | 来源ip    
+ operation   | VARCHAR(255)         | NO   |     |         | 操作对象    
+ operator    | VARCHAR(255)         | YES  |     |         | 操作员     
+ parameter   | LONGTEXT(2147483647) | YES  |     |         | 参数      
+ level       | SMALLINT(5)          | NO   |     |         | 错误级别debug<info<warn<error
+ ipregion    | VARCHAR(128)         | YES  |     |         | ip地区    
+ logtype     | VARCHAR(26)          | NO   |     |         | 日志类型    
+ url         | VARCHAR(1024)        | YES  |     |         | 访问url   
+-------------+----------------------+------+-----+---------+---------
+

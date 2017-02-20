@@ -51,11 +51,13 @@
           友情链接
         </h4>
         <ul class="list-unstyled">
+          <#list listFriendLink as friendLink>
             <li>
-                <a href="https://github.com/">
-                  GitHub
+                <a href="${friendLink.url}">
+                  ${friendLink.name}
                 </a>
             </li>
+          </#list>
         </ul>
 
     </div>

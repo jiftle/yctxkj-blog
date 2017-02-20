@@ -19,6 +19,8 @@ public class _MappingKit {
 		arp.addMapping("xx_admin", "id", Admin.class);
 		arp.addMapping("xx_article", "id", Article.class);
 		arp.addMapping("xx_article_category", "id", ArticleCategory.class);
+		arp.addMapping("xx_friend_link", "id", FriendLink.class);
+		arp.addMapping("xx_log", "id", Log.class);
 	}
 }
 

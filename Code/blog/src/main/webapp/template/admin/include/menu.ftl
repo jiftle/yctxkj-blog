@@ -17,6 +17,10 @@
       <li class="active"><a href="${ctx}/admin/index"><i class="fa fa-dashboard"></i> 消息中心</a></li>
       <li><a href="${ctx}/admin/category/list"><i class="fa fa-table"></i> 分类管理</a></li>
       <li><a href="${ctx}/admin/article/list"><i class="fa fa-table"></i> 文章管理</a></li>
+      <li><a href="${ctx}/admin/friend_link/list"><i class="fa fa-table"></i>友情链接</a></li>
+      <li><a href="${ctx}/admin/cache/index"><i class="fa fa-table"></i>清理缓存</a></li>
+      <li><a href="${ctx}/admin/log/login_list"><i class="fa fa-table"></i>登录日志</a></li>
+      <li><a href="${ctx}/admin/log/access_list"><i class="fa fa-table"></i>访问日志</a></li>
     </ul>
 <#include "menu_head.ftl">
 

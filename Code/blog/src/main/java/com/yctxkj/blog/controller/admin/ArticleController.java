@@ -11,6 +11,7 @@ import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.ext.interceptor.SessionInViewInterceptor;
 import com.jfinal.kit.Ret;
+import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.ehcache.CacheInterceptor;
 import com.jfinal.plugin.ehcache.CacheKit;
 import com.jfinal.plugin.ehcache.CacheName;
@@ -34,10 +35,29 @@ import hirondelle.date4j.DateTime;
 public class ArticleController extends Controller {
 
 	public void list() {
+		String type = this.getPara("type");
+		Integer pageNumber = this.getParaToInt("pageNumber");
+		Integer pageSize = this.getParaToInt("pageSize");
+		
+		if(pageNumber == null || pageNumber <= 0){ 
+			pageNumber = 1;
+		}
+		if(pageSize == null){
+			pageSize = 10;
+		}
+		
+//		if("nextpage".equals(type)){
+//			pageNumber++;
+//		}else if("prevpage".equals(type)){
+//			pageNumber--;
+//		}else{
+//			//...
+//		}
+			
+		
+		Page<Article> page = Article.dao.paginate(pageNumber, pageSize, "select *", "from xx_article");
 
-		List<Article> list = ArticleService.findAll();
-
-		this.setAttr("list", list);
+		this.setAttr("page", page);
 
 		this.render("article/list.ftl");
 	}
