@@ -21,6 +21,7 @@ import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
 import com.yctxkj.blog.config.Route.AdminRoutes;
 import com.yctxkj.blog.config.Route.FrontRoutes;
+import com.yctxkj.blog.config.Route.MobileRoutes;
 import com.yctxkj.blog.handler.StaticHandler;
 import com.yctxkj.blog.interceptor.ExecuteTimeInterceptor;
 import com.yctxkj.blog.interceptor.LogInterceptor;
@@ -58,8 +59,8 @@ public class BlogConfig extends JFinalConfig {
 
 	@Override
 	public void configInterceptor(Interceptors me) {
-		me.add(new ExecuteTimeInterceptor());
-		me.add(new LogInterceptor());
+		me.add(new ExecuteTimeInterceptor());//执行时间
+		me.add(new LogInterceptor());//日志
 	}
 
 	// 配置插件
@@ -94,6 +95,7 @@ public class BlogConfig extends JFinalConfig {
 	public void configRoute(Routes me) {
 		me.add(new FrontRoutes());// 前端路由
 		me.add(new AdminRoutes());// 后端路由
+		me.add(new MobileRoutes());
 	}
 
 	/**
